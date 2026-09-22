@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>mBot Tug of War</title>
+</head>
+
+<body>
+
+    <h1>🏆 mBot Tug of War 🏆</h1>
+
+    <h2>Question</h2>
+
+    <p>{{ question.question }}</p>
+
+    {% if result %}
+        <h2>{{ result }}</h2>
+    {% endif %}
+
+    <hr>
+
+    <h2>Player 1</h2>
+
+    <form method="POST" action="/answer">
+
+        <input type="hidden" name="player" value="1">
+
+        <button type="submit" name="answer" value="{{ question.choices[0] }}">
+            X - {{ question.choices[0] }}
+        </button>
+
+        <button type="submit" name="answer" value="{{ question.choices[1] }}">
+            O - {{ question.choices[1] }}
+        </button>
+
+        <button type="submit" name="answer" value="{{ question.choices[2] }}">
+            □ - {{ question.choices[2] }}
+        </button>
+
+        <button type="submit" name="answer" value="{{ question.choices[3] }}">
+            △ - {{ question.choices[3] }}
+        </button>
+
+        
+
+    </form>
+
+    <hr>
+
+    <h2>Player 2</h2>
+
+    <form method="POST" action="/answer">
+
+        <input type="hidden" name="player" value="2">
+
+        <button type="submit" name="answer" value="{{ question.choices[0] }}">
+            X - {{ question.choices[0] }}
+        </button>
+
+        <button type="submit" name="answer" value="{{ question.choices[1] }}">
+            O - {{ question.choices[1] }}
+        </button>
+
+        <button type="submit" name="answer" value="{{ question.choices[2] }}">
+            □ - {{ question.choices[2] }}
+        </button>
+
+        <button type="submit" name="answer" value="{{ question.choices[3] }}">
+            △ - {{ question.choices[3] }}
+        </button>
+
+    </form>
+
+    <hr>
+
+    <h2>Game</h2>
+
+    <p>Player 1: {{ scores["1"] }}</p>
+    <p>Player 2: {{ scores["2"] }}</p>
+
+    <h2>🟦 ───────── 🤖 ───────── 🟥</h2>
+
+</body>
+</html>

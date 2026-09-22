@@ -1,0 +1,57 @@
+[
+    {
+        "id": 1,
+        "question": "What does a variable store?",
+        "choices": [
+            "A value",
+            "A computer",
+            "A network",
+            "A compiler"
+        ],
+        "answer": "A value"
+    },
+    {
+        "id": 2,
+        "question": "Which keyword is used to make a decision in Python?",
+        "choices": [
+            "if",
+            "print",
+            "loop",
+            "variable"
+        ],
+        "answer": "if"
+    },
+    {
+        "id": 3,
+        "question": "Which symbol is used to assign a value to a variable in Python?",
+        "choices": [
+            "=",
+            "==",
+            "!=",
+            "=>"
+        ],
+        "answer": "="
+    },
+    {
+        "id": 4,
+        "question": "Which function displays text in Python?",
+        "choices": [
+            "show()",
+            "display()",
+            "print()",
+            "text()"
+        ],
+        "answer": "print()"
+    },
+    {
+        "id": 5,
+        "question": "What type of value is 10 in Python?",
+        "choices": [
+            "String",
+            "Integer",
+            "Boolean",
+            "List"
+        ],
+        "answer": "Integer"
+    }
+]
