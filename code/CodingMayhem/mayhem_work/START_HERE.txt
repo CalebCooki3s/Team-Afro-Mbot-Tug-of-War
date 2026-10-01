@@ -1,0 +1,60 @@
+CODING MAYHEM — FINAL BUILD
+
+1. Extract this ZIP.
+2. Open PowerShell in the extracted folder (the folder containing package.json).
+3. Run:
+
+   npm.cmd install
+
+4. Then run:
+
+   npm.cmd run dev
+
+5. Open:
+
+   http://localhost:3000
+
+DEVELOPER TEST LAB
+- When running with `npm.cmd run dev`, the Main Menu includes a DEV LAB button.
+- Dev Lab bypasses the hardware Ready Check, so you can test microgames without the mBot or PS4 controllers connected.
+- Select difficulty + microgame and test directly.
+- Loop Lab and Function Forge cycle through exactly four curated questions (1–4).
+- Keyboard fallback: P1 uses 1/2/3/4 for X/Circle/Square/Triangle; P2 uses 7/8/9/0.
+- Algorithm Arena automatically uses two-player testing.
+- Use Try Again / Next Test to move through challenges without replaying the full game flow.
+
+FINAL HARDWARE FLOW
+- Connect PS4 controller 1 by USB.
+- For Two Player mode, connect PS4 controller 2 by USB.
+- Start your existing mBot Python/BLE server on port 5001.
+- Connect the mBot over Bluetooth through that server.
+- The Ready Check automatically verifies the controllers and safely tests the mBot with /robot/stop.
+- Each player presses X on their controller to confirm READY.
+- The Start button stays locked until every required system is ready.
+
+CONTROLLER INPUT
+- X = choice 1
+- Circle = choice 2
+- Square = choice 3
+- Triangle = choice 4
+- Left stick directions are translated into D-pad-style left/right/up/down inputs for compatible microgames.
+
+GAMEPLAY INCLUDED
+- Easy / Medium / Hard / Extreme timers: 30 / 25 / 20 / 20 seconds
+- Difficulty driven primarily by programming complexity
+- Bubble Blitz with randomized, non-overlapping targets
+- Loop Lab and Function Forge with four curated questions per difficulty
+- Loop Count controller mechanic
+- Match Attack with a five-mistake allowance and a per-attempt timer reset
+- Debugging, tracing, Boolean, complexity, and code-building challenges
+- Algorithm Arena for Hard / Extreme
+- Algorithm Arena generates a fresh maze each time a new arena is created
+- Two-player result explanations and acknowledgement gate
+- Physical PS4 input integration through the browser Gamepad API
+- mBot readiness integration with the existing robot server
+
+IMPORTANT
+The original mBot/robot server files are intentionally not replaced by this frontend package. Keep your original working robot code as your backup and use it with this build.
+
+VALIDATION NOTE
+A full dependency install/build was not completed in this environment because npm dependency installation previously timed out. The source changes are packaged for local testing, and the TypeScript check was also limited by missing installed React/Next dependencies in the environment.

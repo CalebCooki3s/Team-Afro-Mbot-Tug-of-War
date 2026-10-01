@@ -38,6 +38,53 @@ export function TugOfWarGame() {
     return () => window.removeEventListener("keydown", handler)
   }, [status, question, answer])
 
+  // PS4 controllers:
+  // Controller 1 = Player 1
+  // Controller 2 = Player 2
+  // X = A, O = B, Square = C, Triangle = D
+  useEffect(() => {
+    if (status !== "playing" || !question) return
+
+    let animationFrame: number
+    const previousButtons: Record<number, boolean[]> = {}
+
+    const checkControllers = () => {
+      const gamepads = navigator.getGamepads()
+
+      for (let playerIndex = 0; playerIndex < 2; playerIndex++) {
+        const gamepad = gamepads[playerIndex]
+
+        if (!gamepad) continue
+
+        if (!previousButtons[playerIndex]) {
+          previousButtons[playerIndex] = []
+        }
+
+        for (let buttonIndex = 0; buttonIndex < 4; buttonIndex++) {
+          const pressed = gamepad.buttons[buttonIndex]?.pressed ?? false
+          const wasPressed = previousButtons[playerIndex][buttonIndex] ?? false
+
+          // Only answer once when the button is initially pressed
+          if (pressed && !wasPressed) {
+            if (buttonIndex < question.choices.length) {
+              answer((playerIndex + 1) as PlayerId, buttonIndex)
+            }
+          }
+
+          previousButtons[playerIndex][buttonIndex] = pressed
+        }
+      }
+
+      animationFrame = requestAnimationFrame(checkControllers)
+    }
+
+    animationFrame = requestAnimationFrame(checkControllers)
+
+    return () => {
+      cancelAnimationFrame(animationFrame)
+    }
+  }, [status, question, answer])
+
   if (status === "idle" || status === "loading") {
     return (
       <Shell>
